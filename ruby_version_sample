@@ -1,0 +1,20 @@
+#!/usr/bin/ruby
+
+require 'headless'
+require 'watir-webdriver'
+
+Headless.ly do
+  browser = Watir::Browser.new
+
+  browser.goto 'http://osc3.ezimobile.biz/'
+  puts browser.url
+  # Output is http://osc3.ezimobile.biz/catalog/
+
+  browser.goto 'https://silkflowers.affiliatetechnology.com/redirect.php?nt_id=1&URL=http://www.silkflowers.com'
+  puts browser.url
+  # Output is http://www.silkflowers.com/?utm_source=affiliatetraction&utm_medium=CommissionJunction
+
+  browser.goto 'http://snowplay.com/'
+  puts browser.url
+  # Output is http://snowplay.com/cms/
+end
