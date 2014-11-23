@@ -22,19 +22,9 @@ import time
 def main( arguments ):
     driver = webdriver.Firefox()
     #driver = webdriver.PhantomJS('phantomjs')
-    driver.get("https://github.com/login")
+    #driver.get("https://github.com/login")
+    driver.get("http://gerrithub.io")
 
-    username_element = driver.find_element_by_id('login_field')
-    password_element = driver.find_element_by_id('password')
-    login_element = driver.find_element_by_xpath("//*[@id='login']/form/div[3]/input[3]")
-
-
-    time.sleep(float(arguments['<timeout>']))
-
-    username_element.send_keys(arguments['<username>'])
-    password_element.send_keys(arguments['<password>'])
-    login_element.submit()
-    time.sleep(float(arguments['<timeout>']))
 
     if arguments['login']:
         driver.get("http://gerrithub.io/")
@@ -44,6 +34,15 @@ def main( arguments ):
         time.sleep(float(arguments['<timeout>']))
         github_signin = driver.find_element_by_xpath("//*[@id='gerrit_topmenu']/table/tbody/tr/td[3]/div/div[2]/a")
         github_signin.click()
+        time.sleep(float(arguments['<timeout>']))
+
+        username_element = driver.find_element_by_id('login_field')
+        password_element = driver.find_element_by_id('password')
+        login_element = driver.find_element_by_xpath("//*[@id='login']/form/div[3]/input[3]")
+
+        username_element.send_keys(arguments['<username>'])
+        password_element.send_keys(arguments['<password>'])
+        login_element.submit()
         time.sleep(float(arguments['<timeout>']))
 
 
